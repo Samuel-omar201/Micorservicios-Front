@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row style="justify-content: center;" >
+    <div id="divtoolbar">
+    <span>{{ 'principal.texto' | translate }}</span>
+    <mat-icon style="margin-left: 5%;" >list</mat-icon>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<h1 style="color:blue; text-align: center;" >{{ 'segundo.texto' | translate }}</h1>
+
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="">
+</mat-form-field>
+
+<button mat-fab color="primary" routerLink="../registro" > <mat-icon matDatepickerToggleIcon>person_add</mat-icon> </button>
+<button [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('en')" mat-fab color="primary"> <mat-icon matDatepickerToggleIcon>g_translate</mat-icon> </button>
+<button [ngClass]="{'active': activeLang == 'es'}" (click)="cambiarLenguaje('es')" mat-fab color="warn"> <mat-icon matDatepickerToggleIcon>g_translate</mat-icon> </button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id }} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre }} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="apellido">
+    <th mat-header-cell *matHeaderCellDef> Apellido </th>
+    <td mat-cell *matCellDef="let element"> {{element.apellido }} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="fechaNacimiento">
+    <th mat-header-cell *matHeaderCellDef> FechaNacimiento  </th>
+    <td mat-cell *matCellDef="let element"> {{element.fechaNacimiento  }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="identificacion">
+    <th mat-header-cell *matHeaderCellDef> Identificacion  </th>
+    <td mat-cell *matCellDef="let element"> {{element.identificacion  }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="opciones">
+    <th mat-header-cell *matHeaderCellDef> Opciones  </th>
+    <td mat-cell *matCellDef="let element"> 
+      <button mat-raised-button color="primary" [routerLink]="['/registro/', element.id]"  >Editar</button> 
+      <button style="margin-left: 3% ;" (click)="deleteUser( element )" mat-raised-button color="warn">Eliminar</button> </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+

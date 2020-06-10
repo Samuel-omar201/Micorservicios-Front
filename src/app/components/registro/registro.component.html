@@ -1,0 +1,45 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row style="justify-content: center;" >
+    <div id="divtoolbar">
+    <span>Registrar Usuario</span>
+    <mat-icon>account_box</mat-icon>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+  <form (ngSubmit)="registerUser()">
+  <div id="divFRegistro" >
+    <mat-form-field  appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput #input1 maxlength="17"  [(ngModel)]="user.nombre" name="nombre"  placeholder="">
+      <mat-hint> {{input1.value?.length || 0}}/17</mat-hint>
+  </mat-form-field>
+  <br>
+  <mat-form-field  appearance="fill">
+    <mat-label>Apellido</mat-label>
+    <input matInput #input2 maxlength="17"  [(ngModel)]="user.apellido" name="apellido"  placeholder="">
+    <mat-hint> {{input2.value?.length || 0}}/17</mat-hint>
+</mat-form-field>
+<br>
+<mat-form-field >
+  <mat-label>Fecha de Nacimiento</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker">
+    <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<br>
+<mat-form-field  appearance="fill">
+  <mat-label>Identificacion</mat-label>
+  <input matInput #input3 maxlength="17"  [(ngModel)]="user.identificacion" name=" identificacion"  placeholder="">
+  <mat-hint> {{input3.value?.length || 0}}/17</mat-hint>
+</mat-form-field>
+<br>
+<button mat-raised-button color="primary">Guardar</button>
+<button routerLink="../home" mat-raised-button color="primary" style="margin-left: 4%;" >Regresar</button>
+  </div>
+</form>
+  
+  
